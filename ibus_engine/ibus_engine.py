@@ -277,9 +277,10 @@ class Engine(IBus.Engine):
         #
         # [1]: https://github.com/BoGoEngine/ibus-bogo-python/issues/73
         #
-        self.forward_key_event(IBus.grave, 41, 0)
-        for i in range(number_fake_backspace + 1):
-            self.forward_key_event(IBus.BackSpace, 14, 0)
+        if (number_fake_backspace > 0):
+            self.forward_key_event(IBus.grave, 41, 0)
+            for i in range(number_fake_backspace + 1):
+                self.forward_key_event(IBus.BackSpace, 14, 0)
 
         # Charset conversion
         # We encode a Unicode string into a byte sequence with the specified
